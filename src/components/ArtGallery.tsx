@@ -86,67 +86,69 @@ export const ArtGallery = () => {
     <div className="space-y-6">
       {/* Header */}
       <div className="text-center space-y-4">
-        <h1 className="text-4xl font-serif text-foreground">Community Art Gallery</h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <h1 className="text-3xl md:text-4xl font-display text-foreground">Community Art Gallery</h1>
+        <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
           Discover original artworks living in homes throughout our trusted community
         </p>
       </div>
 
-      {/* Search and Filters */}
-      <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
+      {/* Search and Filters - Mobile Optimized */}
+      <div className="flex flex-col gap-4 max-w-2xl mx-auto">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Search artworks, artists, or mediums..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10"
+            className="pl-10 h-12"
           />
         </div>
-        <Button variant="outline" className="flex items-center gap-2">
-          <Filter className="h-4 w-4" />
-          Filters
-        </Button>
-      </div>
-
-      {/* View Toggle */}
-      <div className="flex justify-center">
-        <div className="bg-muted p-1 rounded-lg">
-          <Button
-            variant={viewMode === "grid" ? "default" : "ghost"}
-            size="sm"
-            onClick={() => setViewMode("grid")}
-            className="px-4"
-          >
-            Grid
+        <div className="flex gap-2">
+          <Button variant="outline" className="flex items-center gap-2 flex-1 sm:flex-none">
+            <Filter className="h-4 w-4" />
+            Filters
           </Button>
-          <Button
-            variant={viewMode === "list" ? "default" : "ghost"}
-            size="sm"
-            onClick={() => setViewMode("list")}
-            className="px-4"
-          >
-            List
-          </Button>
+          
+          {/* View Toggle - Mobile Friendly */}
+          <div className="bg-muted p-1 rounded-lg">
+            <Button
+              variant={viewMode === "grid" ? "default" : "ghost"}
+              size="sm"
+              onClick={() => setViewMode("grid")}
+              className="px-3 text-xs"
+            >
+              Grid
+            </Button>
+            <Button
+              variant={viewMode === "list" ? "default" : "ghost"}
+              size="sm"
+              onClick={() => setViewMode("list")}
+              className="px-3 text-xs"
+            >
+              List
+            </Button>
+          </div>
         </div>
       </div>
 
-      {/* Artworks Grid/List */}
+      {/* Artworks Grid/List - Enhanced Mobile */}
       <div className={cn(
-        "gap-6",
+        "gap-4 md:gap-6",
         viewMode === "grid" 
-          ? "grid md:grid-cols-2 lg:grid-cols-3" 
-          : "space-y-6"
+          ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" 
+          : "space-y-4 md:space-y-6"
       )}>
         {filteredArtworks.map((artwork) => (
-          <Card key={artwork.id} className="group hover:shadow-lg transition-all duration-300 hover:scale-102 border-border/50">
+          <Card key={artwork.id} className="group hover:shadow-lg transition-all duration-300 hover:scale-102 border-border/50 overflow-hidden">
             <div className={cn(
-              viewMode === "list" ? "flex gap-6" : ""
+              viewMode === "list" ? "flex flex-col sm:flex-row gap-4" : ""
             )}>
-              {/* Artwork Image */}
+              {/* Artwork Image - Mobile Optimized */}
               <div className={cn(
                 "relative overflow-hidden bg-muted",
-                viewMode === "list" ? "w-48 h-48 flex-shrink-0" : "aspect-square"
+                viewMode === "list" 
+                  ? "w-full sm:w-48 aspect-square sm:aspect-square flex-shrink-0" 
+                  : "aspect-square"
               )}>
                 <img
                   src={artwork.image}
@@ -158,15 +160,15 @@ export const ArtGallery = () => {
                 </div>
               </div>
 
-              {/* Content */}
+              {/* Content - Mobile Optimized */}
               <div className="flex-1">
-                <CardHeader className="pb-3">
+                <CardHeader className="pb-3 p-4 md:p-6">
                   <div className="flex items-start justify-between gap-3">
-                    <div className="space-y-1 flex-1">
-                      <CardTitle className="text-lg font-serif group-hover:text-primary transition-colors">
+                    <div className="space-y-1 flex-1 min-w-0">
+                      <CardTitle className="text-lg md:text-xl font-display group-hover:text-primary transition-colors truncate">
                         {artwork.title}
                       </CardTitle>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-muted-foreground truncate">
                         by {artwork.artist}
                       </p>
                       <p className="text-xs text-muted-foreground">
@@ -184,44 +186,44 @@ export const ArtGallery = () => {
                   </div>
                 </CardHeader>
 
-                <CardContent className="space-y-4">
-                  <CardDescription className="text-sm leading-relaxed">
+                <CardContent className="space-y-4 p-4 md:p-6 pt-0">
+                  <CardDescription className="text-sm leading-relaxed line-clamp-3">
                     {artwork.description}
                   </CardDescription>
 
-                  {/* Host Info */}
+                  {/* Host Info - Mobile Friendly */}
                   <div className="flex items-center gap-3">
-                    <Avatar className="h-8 w-8">
+                    <Avatar className="h-8 w-8 flex-shrink-0">
                       <AvatarImage src={artwork.hostImage} alt={artwork.host} />
                       <AvatarFallback className="text-xs bg-gradient-to-br from-rose-100 to-amber-100">
                         {artwork.host.split(' ').map(n => n[0]).join('')}
                       </AvatarFallback>
                     </Avatar>
-                    <div className="text-xs space-y-1">
-                      <p className="font-medium">Hosted by {artwork.host}</p>
+                    <div className="text-xs space-y-1 min-w-0 flex-1">
+                      <p className="font-medium truncate">Hosted by {artwork.host}</p>
                       <div className="flex items-center gap-1 text-muted-foreground">
-                        <MapPin className="h-3 w-3" />
-                        {artwork.location}
+                        <MapPin className="h-3 w-3 flex-shrink-0" />
+                        <span className="truncate">{artwork.location}</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Visit Preferences */}
+                  {/* Visit Preferences - Mobile Optimized */}
                   <div className="text-xs text-muted-foreground">
                     <p className="font-medium mb-1">Visit Preference:</p>
-                    <p>{artwork.visitPreference}</p>
+                    <p className="text-xs">{artwork.visitPreference}</p>
                   </div>
 
-                  {/* Stats */}
+                  {/* Stats - Mobile Layout */}
                   <div className="flex items-center justify-between text-xs text-muted-foreground">
                     <div className="flex items-center gap-4">
                       <div className="flex items-center gap-1">
                         <Eye className="h-3 w-3" />
-                        {artwork.viewCount}
+                        <span>{artwork.viewCount}</span>
                       </div>
                       <div className="flex items-center gap-1">
                         <Heart className="h-3 w-3" />
-                        {artwork.hearts}
+                        <span>{artwork.hearts}</span>
                       </div>
                     </div>
                   </div>

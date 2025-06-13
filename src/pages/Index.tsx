@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { MapPin, Heart, Users, Calendar, ArrowRight, Star } from "lucide-react";
 import { WelcomeHero } from "@/components/WelcomeHero";
+import { HowItWorks } from "@/components/HowItWorks";
 import { ArtGallery } from "@/components/ArtGallery";
 import { TrustNetwork } from "@/components/TrustNetwork";
 import { VisitPlanner } from "@/components/VisitPlanner";
