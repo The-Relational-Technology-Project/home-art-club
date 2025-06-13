@@ -1,11 +1,8 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, Users, MapPin, ArrowRight } from "lucide-react";
-
 export const WelcomeHero = () => {
-  return (
-    <section className="relative overflow-hidden">
+  return <section className="relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-rose-50/30 via-amber-50/20 to-emerald-50/30 rounded-3xl" />
       
@@ -18,10 +15,7 @@ export const WelcomeHero = () => {
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Where trust meets creativity. Discover intimate art experiences in neighborhood homes, 
-            curated by a community that values connection over commerce.
-          </p>
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">Discover intimate art experiences in neighborhood homes, curated by a community that values connection.</p>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
@@ -73,6 +67,5 @@ export const WelcomeHero = () => {
           </Card>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
