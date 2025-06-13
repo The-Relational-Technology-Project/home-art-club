@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -28,8 +27,10 @@ const Index = () => {
           <div className="space-y-12">
             <WelcomeHero />
             
+            <HowItWorks />
+            
             {/* Featured Art Hosts */}
-            <section className="space-y-6">
+            <section id="featured-homes" className="space-y-6">
               <div className="text-center">
                 <h2 className="text-3xl font-serif text-foreground mb-3">Featured Art Homes</h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
