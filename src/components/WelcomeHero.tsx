@@ -1,71 +1,77 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, Users, MapPin, ArrowRight } from "lucide-react";
+
 export const WelcomeHero = () => {
-  return <section className="relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-rose-50/30 via-amber-50/20 to-emerald-50/30 rounded-3xl" />
+  return (
+    <section className="relative overflow-hidden">
+      {/* Minimal background */}
+      <div className="absolute inset-0 gradient-minimal" />
       
-      <div className="relative py-16 px-8 text-center space-y-8">
-        <div className="space-y-4 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-serif text-foreground leading-tight">
+      <div className="relative py-20 px-8 text-center space-y-12">
+        <div className="space-y-6 max-w-4xl mx-auto">
+          <h1 className="font-display text-foreground leading-tight">
             Art Lives in
-            <span className="block text-transparent bg-gradient-to-r from-rose-500 to-amber-500 bg-clip-text">
+            <span className="block text-art-blue">
               Our Homes
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">Discover intimate art experiences in neighborhood homes, curated by a community that values connection.</p>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-light">
+            Discover intimate art experiences in neighborhood homes, curated by a community that values connection.
+          </p>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-          <Button size="lg" className="flex items-center gap-2 text-lg px-8 py-3">
-            Join Our Circle
-            <ArrowRight className="h-5 w-5" />
+          <Button size="lg" className="flex items-center gap-2 text-base px-8 py-4 bg-primary text-primary-foreground hover:bg-warm-gray transition-gentle">
+            Join the Club
+            <ArrowRight className="h-4 w-4" />
           </Button>
-          <Button variant="outline" size="lg" className="text-lg px-8 py-3">
+          <Button variant="outline" size="lg" className="text-base px-8 py-4 border-border hover:bg-muted transition-gentle">
             How It Works
           </Button>
         </div>
 
         {/* Feature cards */}
-        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-12">
-          <Card className="border-border/50 hover:shadow-md transition-all duration-300">
-            <CardContent className="p-6 text-center space-y-3">
-              <div className="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mx-auto">
-                <Heart className="h-6 w-6 text-rose-600" />
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mt-16">
+          <Card className="border-border hover:shadow-clean transition-gentle">
+            <CardContent className="p-8 text-center space-y-4">
+              <div className="w-12 h-12 bg-light-gray flex items-center justify-center mx-auto">
+                <Heart className="h-6 w-6 text-foreground" />
               </div>
-              <h3 className="text-lg font-serif font-semibold">Trust-Based</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="text-lg font-normal">Trust-Based</h3>
+              <p className="text-sm text-muted-foreground font-light leading-relaxed">
                 Invitation-only community with vouching system ensures authentic connections
               </p>
             </CardContent>
           </Card>
 
-          <Card className="border-border/50 hover:shadow-md transition-all duration-300">
-            <CardContent className="p-6 text-center space-y-3">
-              <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto">
-                <MapPin className="h-6 w-6 text-amber-600" />
+          <Card className="border-border hover:shadow-clean transition-gentle">
+            <CardContent className="p-8 text-center space-y-4">
+              <div className="w-12 h-12 bg-light-gray flex items-center justify-center mx-auto">
+                <MapPin className="h-6 w-6 text-foreground" />
               </div>
-              <h3 className="text-lg font-serif font-semibold">Neighborhood Focus</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="text-lg font-normal">Neighborhood Focus</h3>
+              <p className="text-sm text-muted-foreground font-light leading-relaxed">
                 Discover art in your community and build relationships with local creators
               </p>
             </CardContent>
           </Card>
 
-          <Card className="border-border/50 hover:shadow-md transition-all duration-300">
-            <CardContent className="p-6 text-center space-y-3">
-              <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto">
-                <Users className="h-6 w-6 text-emerald-600" />
+          <Card className="border-border hover:shadow-clean transition-gentle">
+            <CardContent className="p-8 text-center space-y-4">
+              <div className="w-12 h-12 bg-light-gray flex items-center justify-center mx-auto">
+                <Users className="h-6 w-6 text-foreground" />
               </div>
-              <h3 className="text-lg font-serif font-semibold">Intimate Experiences</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="text-lg font-normal">Intimate Experiences</h3>
+              <p className="text-sm text-muted-foreground font-light leading-relaxed">
                 Small group visits that honor both art and the sacred space of home
               </p>
             </CardContent>
           </Card>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };

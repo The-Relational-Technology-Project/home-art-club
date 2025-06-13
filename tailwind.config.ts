@@ -53,25 +53,15 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Custom Home Art Club colors
-				sage: {
-					DEFAULT: 'hsl(var(--sage))',
-					light: 'hsl(var(--sage-light))'
-				},
-				dustyrose: {
-					DEFAULT: 'hsl(var(--dusty-rose))',
-					light: 'hsl(var(--dusty-rose-light))'
-				},
-				warmamber: {
-					DEFAULT: 'hsl(var(--warm-amber))',
-					light: 'hsl(var(--warm-amber-light))'
-				},
-				charcoal: 'hsl(var(--charcoal))',
-				softgray: 'hsl(var(--soft-gray))'
+				// MoMA-inspired colors
+				'art-blue': 'hsl(var(--art-blue))',
+				'art-red': 'hsl(var(--art-red))',
+				'warm-gray': 'hsl(var(--warm-gray))',
+				'light-gray': 'hsl(var(--light-gray))'
 			},
 			fontFamily: {
-				serif: ['Georgia', 'Times New Roman', 'serif'],
-				sans: ['Inter', 'system-ui', 'sans-serif']
+				sans: ['Helvetica', 'Arial', 'system-ui', 'sans-serif'],
+				display: ['Helvetica', 'Arial', 'system-ui', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -98,27 +88,18 @@ export default {
 				'fade-in': {
 					'0%': {
 						opacity: '0',
-						transform: 'translateY(10px)'
+						transform: 'translateY(4px)'
 					},
 					'100%': {
 						opacity: '1',
 						transform: 'translateY(0)'
-					}
-				},
-				'gentle-scale': {
-					'0%': {
-						transform: 'scale(1)'
-					},
-					'100%': {
-						transform: 'scale(1.02)'
 					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.3s ease-out',
-				'gentle-scale': 'gentle-scale 0.2s ease-out'
+				'fade-in': 'fade-in 0.2s ease-out'
 			}
 		}
 	},

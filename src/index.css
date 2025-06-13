@@ -3,79 +3,75 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Home Art Club Design System - Artsy-Industrial with Muted Neons */
+/* Home Art Club Design System - MoMA-Inspired Aesthetic */
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 0%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 142 76% 36%;
-    --primary-foreground: 355 100% 97%;
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 142 76% 36%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 0%;
 
-    --radius: 0.5rem;
+    --radius: 0rem;
 
-    /* Custom Home Art Club colors */
-    --sage: 142 76% 36%;
-    --sage-light: 142 60% 85%;
-    --dusty-rose: 340 30% 65%;
-    --dusty-rose-light: 340 20% 90%;
-    --warm-amber: 45 70% 60%;
-    --warm-amber-light: 45 50% 85%;
-    --charcoal: 222 84% 10%;
-    --soft-gray: 210 20% 90%;
+    /* MoMA-inspired accent colors */
+    --art-blue: 204 100% 50%;
+    --art-red: 0 100% 60%;
+    --warm-gray: 0 0% 25%;
+    --light-gray: 0 0% 93%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 142 76% 36%;
-    --primary-foreground: 355 100% 97%;
+    --primary: 0 0% 95%;
+    --primary-foreground: 0 0% 5%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 95%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 95%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 142 76% 36%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 95%;
   }
 }
 
@@ -87,58 +83,86 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Helvetica', 'Arial', sans-serif;
   }
 
-  /* Typography hierarchy */
+  /* Typography hierarchy - MoMA inspired */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+    @apply font-sans font-normal;
+    letter-spacing: -0.02em;
   }
 
-  .font-serif {
-    font-family: 'Georgia', 'Times New Roman', serif;
+  h1 {
+    @apply text-4xl md:text-6xl font-light;
+  }
+
+  h2 {
+    @apply text-2xl md:text-4xl font-light;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl font-normal;
+  }
+
+  .font-display {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-weight: 300;
+    letter-spacing: -0.02em;
   }
 }
 
 @layer components {
-  /* Gentle transitions and animations */
+  /* Minimal transitions */
   .transition-gentle {
-    @apply transition-all duration-300 ease-in-out;
+    @apply transition-all duration-200 ease-linear;
   }
 
-  /* Soft shadows */
-  .shadow-soft {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  /* Clean shadows */
+  .shadow-clean {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
-  .shadow-soft-lg {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+  .shadow-clean-lg {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   }
 
   /* Hover effects */
   .hover-lift {
-    @apply transition-all duration-300 hover:shadow-soft-lg hover:-translate-y-1;
+    @apply transition-all duration-200 hover:shadow-clean-lg hover:-translate-y-0.5;
   }
 
-  /* Custom gradients */
-  .gradient-sage {
-    background: linear-gradient(135deg, hsl(var(--sage)) 0%, hsl(var(--sage-light)) 100%);
+  /* MoMA-style accent colors */
+  .bg-art-blue {
+    background-color: hsl(var(--art-blue));
   }
 
-  .gradient-rose {
-    background: linear-gradient(135deg, hsl(var(--dusty-rose)) 0%, hsl(var(--dusty-rose-light)) 100%);
+  .text-art-blue {
+    color: hsl(var(--art-blue));
   }
 
-  .gradient-amber {
-    background: linear-gradient(135deg, hsl(var(--warm-amber)) 0%, hsl(var(--warm-amber-light)) 100%);
+  .bg-art-red {
+    background-color: hsl(var(--art-red));
   }
 
-  /* Text gradients */
-  .text-gradient-sage {
-    @apply bg-gradient-to-r from-emerald-600 to-emerald-400 bg-clip-text text-transparent;
+  .text-art-red {
+    color: hsl(var(--art-red));
   }
 
-  .text-gradient-rose {
-    @apply bg-gradient-to-r from-rose-500 to-amber-500 bg-clip-text text-transparent;
+  .bg-warm-gray {
+    background-color: hsl(var(--warm-gray));
+  }
+
+  .text-warm-gray {
+    color: hsl(var(--warm-gray));
+  }
+
+  .bg-light-gray {
+    background-color: hsl(var(--light-gray));
+  }
+
+  /* Minimal gradient */
+  .gradient-minimal {
+    background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--light-gray)) 100%);
   }
 }
 

@@ -20,16 +20,16 @@ export const Navigation = ({ currentView, onViewChange }: NavigationProps) => {
   ];
 
   return (
-    <nav className="border-b border-border/50 bg-background/95 backdrop-blur-sm sticky top-0 z-50">
+    <nav className="border-b border-border bg-background sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-rose-400 to-amber-400 rounded-lg flex items-center justify-center">
+          <div className="flex items-center space-x-3">
+            <div className="w-8 h-8 bg-art-blue flex items-center justify-center">
               <Home className="h-4 w-4 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-serif font-semibold text-foreground">
+              <h1 className="text-xl font-normal text-foreground">
                 Home Art Club
               </h1>
             </div>
@@ -45,10 +45,10 @@ export const Navigation = ({ currentView, onViewChange }: NavigationProps) => {
                   variant={currentView === item.id ? "default" : "ghost"}
                   onClick={() => onViewChange(item.id)}
                   className={cn(
-                    "flex items-center gap-2 transition-all duration-200",
+                    "flex items-center gap-2 transition-gentle font-light",
                     currentView === item.id 
-                      ? "bg-primary text-primary-foreground shadow-sm" 
-                      : "hover:bg-muted/50"
+                      ? "bg-primary text-primary-foreground" 
+                      : "hover:bg-muted"
                   )}
                 >
                   <Icon className="h-4 w-4" />
@@ -76,7 +76,7 @@ export const Navigation = ({ currentView, onViewChange }: NavigationProps) => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-border/50 py-4">
+          <div className="md:hidden border-t border-border py-4">
             <div className="grid grid-cols-2 gap-2">
               {navItems.map((item) => {
                 const Icon = item.icon;
@@ -89,10 +89,10 @@ export const Navigation = ({ currentView, onViewChange }: NavigationProps) => {
                       setIsMobileMenuOpen(false);
                     }}
                     className={cn(
-                      "flex items-center gap-2 justify-start h-12",
+                      "flex items-center gap-2 justify-start h-12 transition-gentle font-light",
                       currentView === item.id 
                         ? "bg-primary text-primary-foreground" 
-                        : "hover:bg-muted/50"
+                        : "hover:bg-muted"
                     )}
                   >
                     <Icon className="h-4 w-4" />

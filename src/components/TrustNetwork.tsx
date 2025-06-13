@@ -4,136 +4,133 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Users, UserPlus, MessageCircle, Shield, Heart, ArrowRight } from "lucide-react";
+import { Users, UserPlus, MessageCircle, ArrowRight, Mail } from "lucide-react";
 
 export const TrustNetwork = () => {
-  const [activeTab, setActiveTab] = useState<"network" | "invites" | "vouches">("network");
+  const [activeTab, setActiveTab] = useState<"connections" | "invitations" | "invite">("connections");
 
   const connections = [
     {
       name: "Maya Chen",
-      relationship: "Invited by you",
-      mutualConnections: 3,
+      relationship: "You invited Maya",
       joinDate: "Mar 2024",
       image: "/placeholder.svg",
-      vouch: "Maya brings incredible warmth to every art space she enters. Her ceramic work speaks to the soul.",
-      artHosting: true
+      note: "Maya brings incredible warmth to every art space she enters."
     },
     {
       name: "Roberto Santos", 
-      relationship: "Invited you",
-      mutualConnections: 7,
+      relationship: "Roberto invited you",
       joinDate: "Jan 2024",
       image: "/placeholder.svg",
-      vouch: "Roberto's eye for capturing authentic moments makes him a trusted community member.",
-      artHosting: true
+      note: "Roberto's eye for capturing authentic moments makes him trusted."
     },
     {
       name: "Sam Rivera",
-      relationship: "Mutual friend of Maya",
-      mutualConnections: 2,
+      relationship: "Mutual connection",
       joinDate: "Apr 2024", 
       image: "/placeholder.svg",
-      vouch: "Sam creates the most welcoming spaces for viewing art. A natural curator and host.",
-      artHosting: false
-    },
-    {
-      name: "Quinn Parker",
-      relationship: "Local pod member", 
-      mutualConnections: 5,
-      joinDate: "Feb 2024",
-      image: "/placeholder.svg",
-      vouch: "Quinn's thoughtful approach to community building strengthens our trust network.",
-      artHosting: false
+      note: "Sam creates the most welcoming spaces for viewing art."
     }
   ];
 
-  const invitesReceived = [
+  const sentInvitations = [
     {
       name: "Alex Morrison",
-      from: "Maya Chen",
-      artCount: 6,
-      specialty: "Abstract Painting",
-      image: "/placeholder.svg",
-      message: "Alex creates stunning abstract works that would be perfect for our community. Their home studio has the most amazing natural light!"
+      email: "alex@example.com",
+      status: "Pending",
+      sentDate: "2 days ago",
+      note: "Invited Alex to join our community of art lovers"
+    },
+    {
+      name: "Jordan Kim",
+      email: "jordan@example.com", 
+      status: "Accepted",
+      sentDate: "1 week ago",
+      note: "Jordan accepted and is now part of the community"
     }
   ];
 
-  const renderNetworkView = () => (
-    <div className="space-y-6">
-      {/* Trust Circle Overview */}
-      <Card className="bg-gradient-to-r from-emerald-50/50 to-blue-50/50 border-border/50">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-xl font-serif">
-            <Shield className="h-5 w-5 text-emerald-600" />
-            Your Trust Circle
-          </CardTitle>
-          <CardDescription>
-            The foundation of our community is built on meaningful connections and mutual vouching
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid md:grid-cols-3 gap-6 text-center">
-            <div className="space-y-2">
-              <div className="text-3xl font-serif text-foreground">12</div>
-              <div className="text-sm text-muted-foreground">Direct Connections</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-3xl font-serif text-foreground">45</div>
-              <div className="text-sm text-muted-foreground">Extended Network</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-3xl font-serif text-foreground">8</div>
-              <div className="text-sm text-muted-foreground">Art Hosts in Circle</div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+  const renderConnectionsView = () => (
+    <div className="space-y-8">
+      <div className="text-center">
+        <h2 className="text-2xl font-light text-foreground mb-3">Your Connections</h2>
+        <p className="text-muted-foreground font-light">
+          People you've invited and who have invited you to the club
+        </p>
+      </div>
 
-      {/* Connection Cards */}
       <div className="grid md:grid-cols-2 gap-6">
         {connections.map((connection, index) => (
-          <Card key={index} className="hover:shadow-md transition-all duration-300 border-border/50">
-            <CardHeader className="pb-3">
-              <div className="flex items-center gap-3">
-                <Avatar className="h-12 w-12">
+          <Card key={index} className="hover:shadow-clean transition-gentle border-border">
+            <CardHeader className="pb-4">
+              <div className="flex items-center gap-4">
+                <Avatar className="h-16 w-16">
                   <AvatarImage src={connection.image} alt={connection.name} />
-                  <AvatarFallback className="bg-gradient-to-br from-rose-100 to-amber-100">
+                  <AvatarFallback className="bg-light-gray text-foreground">
                     {connection.name.split(' ').map(n => n[0]).join('')}
                   </AvatarFallback>
                 </Avatar>
                 <div className="flex-1">
-                  <CardTitle className="text-lg font-serif">{connection.name}</CardTitle>
-                  <p className="text-sm text-muted-foreground">{connection.relationship}</p>
-                  <div className="flex items-center gap-2 mt-1">
-                    <Badge variant="outline" className="text-xs">
-                      {connection.mutualConnections} mutual
-                    </Badge>
-                    {connection.artHosting && (
-                      <Badge variant="secondary" className="text-xs">
-                        Art Host
-                      </Badge>
-                    )}
-                  </div>
+                  <CardTitle className="text-lg font-normal">{connection.name}</CardTitle>
+                  <p className="text-sm text-muted-foreground font-light">{connection.relationship}</p>
+                  <p className="text-xs text-muted-foreground mt-1">Joined {connection.joinDate}</p>
                 </div>
               </div>
             </CardHeader>
             
             <CardContent className="space-y-4">
-              <div className="bg-muted/30 p-3 rounded-lg">
-                <p className="text-sm italic text-muted-foreground leading-relaxed">
-                  "{connection.vouch}"
+              <div className="bg-muted p-4">
+                <p className="text-sm text-muted-foreground font-light italic">
+                  "{connection.note}"
                 </p>
               </div>
               
+              <Button variant="outline" size="sm" className="flex items-center gap-2 transition-gentle">
+                <MessageCircle className="h-4 w-4" />
+                Message
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderInvitationsView = () => (
+    <div className="space-y-8">
+      <div className="text-center">
+        <h2 className="text-2xl font-light text-foreground mb-3">Your Invitations</h2>
+        <p className="text-muted-foreground font-light">
+          Track the invitations you've sent to potential members
+        </p>
+      </div>
+
+      <div className="space-y-4">
+        {sentInvitations.map((invite, index) => (
+          <Card key={index} className="border-border">
+            <CardContent className="p-6">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-muted-foreground">
-                  Joined {connection.joinDate}
-                </span>
-                <Button variant="outline" size="sm" className="flex items-center gap-1">
-                  <MessageCircle className="h-3 w-3" />
-                  Message
-                </Button>
+                <div className="flex items-center gap-4">
+                  <Avatar className="h-12 w-12">
+                    <AvatarFallback className="bg-light-gray text-foreground">
+                      {invite.name.split(' ').map(n => n[0]).join('')}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <h3 className="font-normal">{invite.name}</h3>
+                    <p className="text-sm text-muted-foreground font-light">{invite.email}</p>
+                    <p className="text-xs text-muted-foreground">Sent {invite.sentDate}</p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <Badge 
+                    variant={invite.status === "Accepted" ? "default" : "secondary"}
+                    className="mb-2"
+                  >
+                    {invite.status}
+                  </Badge>
+                  <p className="text-xs text-muted-foreground font-light">{invite.note}</p>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -142,94 +139,37 @@ export const TrustNetwork = () => {
     </div>
   );
 
-  const renderInvitesView = () => (
-    <div className="space-y-6">
+  const renderInviteView = () => (
+    <div className="space-y-8">
       <div className="text-center">
-        <h2 className="text-2xl font-serif text-foreground mb-2">Pending Invitations</h2>
-        <p className="text-muted-foreground">
-          Community members who have been vouched for and are waiting for approval
+        <h2 className="text-2xl font-light text-foreground mb-3">Invite Someone</h2>
+        <p className="text-muted-foreground font-light">
+          Vouch for someone you trust to join our art community
         </p>
       </div>
 
-      {invitesReceived.map((invite, index) => (
-        <Card key={index} className="border-border/50">
-          <CardHeader>
-            <div className="flex items-center gap-4">
-              <Avatar className="h-16 w-16">
-                <AvatarImage src={invite.image} alt={invite.name} />
-                <AvatarFallback className="bg-gradient-to-br from-rose-100 to-amber-100 text-lg">
-                  {invite.name.split(' ').map(n => n[0]).join('')}
-                </AvatarFallback>
-              </Avatar>
-              <div className="flex-1">
-                <CardTitle className="text-xl font-serif">{invite.name}</CardTitle>
-                <p className="text-sm text-muted-foreground">Invited by {invite.from}</p>
-                <div className="flex gap-2 mt-2">
-                  <Badge variant="secondary" className="text-xs">
-                    {invite.artCount} artworks
-                  </Badge>
-                  <Badge variant="outline" className="text-xs">
-                    {invite.specialty}
-                  </Badge>
-                </div>
-              </div>
-            </div>
-          </CardHeader>
-          
-          <CardContent className="space-y-4">
-            <div className="bg-muted/30 p-4 rounded-lg">
-              <p className="text-sm italic text-muted-foreground leading-relaxed">
-                "{invite.message}"
-              </p>
-              <p className="text-xs text-muted-foreground mt-2">— {invite.from}</p>
-            </div>
-            
-            <div className="flex gap-3">
-              <Button className="flex-1 flex items-center gap-2">
-                <Heart className="h-4 w-4" />
-                Welcome to Community
-              </Button>
-              <Button variant="outline" className="flex-1">
-                Learn More
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
-  );
-
-  const renderVouchesView = () => (
-    <div className="space-y-6">
-      <div className="text-center">
-        <h2 className="text-2xl font-serif text-foreground mb-2">Share Your Vouch</h2>
-        <p className="text-muted-foreground">
-          Know someone who would enrich our art community? Invite them to join.
-        </p>
-      </div>
-
-      <Card className="border-border/50">
+      <Card className="max-w-md mx-auto border-border">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+          <CardTitle className="flex items-center gap-2 font-normal">
             <UserPlus className="h-5 w-5" />
-            Invite Someone Special
+            Send Invitation
           </CardTitle>
-          <CardDescription>
-            Invitations are a sacred trust. Consider who would both contribute to and benefit from our community.
+          <CardDescription className="font-light">
+            By inviting someone, you're vouching for their character and commitment to our community values.
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          <Button className="w-full flex items-center gap-2">
-            <UserPlus className="h-4 w-4" />
+        <CardContent className="space-y-4">
+          <Button className="w-full flex items-center gap-2 bg-primary text-primary-foreground hover:bg-warm-gray transition-gentle">
+            <Mail className="h-4 w-4" />
             Compose Invitation
             <ArrowRight className="h-4 w-4" />
           </Button>
         </CardContent>
       </Card>
 
-      <div className="bg-muted/30 p-6 rounded-lg">
-        <h3 className="font-serif text-lg mb-3">What makes a good community member?</h3>
-        <ul className="space-y-2 text-sm text-muted-foreground">
+      <div className="max-w-2xl mx-auto bg-muted p-6">
+        <h3 className="font-normal text-lg mb-4">What makes a good community member?</h3>
+        <ul className="space-y-2 text-sm text-muted-foreground font-light">
           <li>• Genuine appreciation for art and creative expression</li>
           <li>• Respect for intimate spaces and personal boundaries</li>
           <li>• Commitment to building trust and fostering connection</li>
@@ -241,36 +181,36 @@ export const TrustNetwork = () => {
   );
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Header */}
       <div className="text-center space-y-4">
-        <h1 className="text-4xl font-serif text-foreground">Trust Network</h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Relationships are the foundation of our community. See your connections and help grow our circle.
+        <h1 className="font-display text-foreground">Trust Network</h1>
+        <p className="text-lg text-muted-foreground font-light max-w-2xl mx-auto">
+          Relationships are the foundation of our community
         </p>
       </div>
 
       {/* Tab Navigation */}
       <div className="flex justify-center">
-        <div className="bg-muted p-1 rounded-lg">
+        <div className="bg-muted p-1">
           <Button
-            variant={activeTab === "network" ? "default" : "ghost"}
-            onClick={() => setActiveTab("network")}
-            className="px-6"
+            variant={activeTab === "connections" ? "default" : "ghost"}
+            onClick={() => setActiveTab("connections")}
+            className="px-6 transition-gentle"
           >
-            My Network
+            Connections
           </Button>
           <Button
-            variant={activeTab === "invites" ? "default" : "ghost"}
-            onClick={() => setActiveTab("invites")}
-            className="px-6"
+            variant={activeTab === "invitations" ? "default" : "ghost"}
+            onClick={() => setActiveTab("invitations")}
+            className="px-6 transition-gentle"
           >
             Invitations
           </Button>
           <Button
-            variant={activeTab === "vouches" ? "default" : "ghost"}
-            onClick={() => setActiveTab("vouches")}
-            className="px-6"
+            variant={activeTab === "invite" ? "default" : "ghost"}
+            onClick={() => setActiveTab("invite")}
+            className="px-6 transition-gentle"
           >
             Invite Others
           </Button>
@@ -278,9 +218,9 @@ export const TrustNetwork = () => {
       </div>
 
       {/* Content */}
-      {activeTab === "network" && renderNetworkView()}
-      {activeTab === "invites" && renderInvitesView()}
-      {activeTab === "vouches" && renderVouchesView()}
+      {activeTab === "connections" && renderConnectionsView()}
+      {activeTab === "invitations" && renderInvitationsView()}
+      {activeTab === "invite" && renderInviteView()}
     </div>
   );
 };
